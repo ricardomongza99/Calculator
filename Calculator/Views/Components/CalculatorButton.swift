@@ -7,22 +7,28 @@
 
 import SwiftUI
 
-struct CalculatorButton: View {
-    
-    let buttonType: ButtonType
-    
-    var body: some View {
-        Button(buttonType.description) { }
-            .buttonStyle(CalculatorButtonStyle(
-                size: 80,
-                backgroundColor: buttonType.backgroundColor,
-                foregroundColor: buttonType.foregroundColor)
-            )
+extension CalculatorView {
+    struct CalculatorButton: View {
+        
+        let buttonType: ButtonType
+        
+        var body: some View {
+            Button(buttonType.description) { }
+                .buttonStyle(CalculatorButtonStyle(
+                    size: getButtonSize(),
+                    backgroundColor: buttonType.backgroundColor,
+                    foregroundColor: buttonType.foregroundColor)
+                )
+        }
+        
+        private func getButtonSize() -> CGFloat {
+            return (UIScreen.main.bounds.width - (5 * 8)) / 4
+        }
     }
 }
 
-struct CalculatorButton_Previews: PreviewProvider {
+struct CalculatorView_CalculatorButton_Previews: PreviewProvider {
     static var previews: some View {
-        CalculatorButton(buttonType: .digit(.five))
+        CalculatorView.CalculatorButton(buttonType: .digit(.five))
     }
 }
