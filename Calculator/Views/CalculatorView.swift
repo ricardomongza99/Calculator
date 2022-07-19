@@ -30,7 +30,7 @@ struct CalculatorView: View {
     }
 }
 
-// MARK: - PREVIES
+// MARK: - PREVIEWS
 
 struct CalculatorView_Previews: PreviewProvider {
     static var previews: some View {

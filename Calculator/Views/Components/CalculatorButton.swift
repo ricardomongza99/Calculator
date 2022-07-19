@@ -17,7 +17,8 @@ extension CalculatorView {
                 .buttonStyle(CalculatorButtonStyle(
                     size: getButtonSize(),
                     backgroundColor: buttonType.backgroundColor,
-                    foregroundColor: buttonType.foregroundColor)
+                    foregroundColor: buttonType.foregroundColor,
+                    isWide: buttonType == .digit(.zero))
                 )
         }
         
