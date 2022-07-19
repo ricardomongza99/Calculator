@@ -22,7 +22,10 @@ extension CalculatorView {
         }
         
         private func getButtonSize() -> CGFloat {
-            return (UIScreen.main.bounds.width - (5 * 8)) / 4
+            let screenWidth = UIScreen.main.bounds.width
+            let buttonCount: CGFloat = 4
+            let spacingCount = buttonCount + 1
+            return (screenWidth - (spacingCount * Constants.padding)) / buttonCount
         }
     }
 }
