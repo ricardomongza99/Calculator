@@ -8,13 +8,21 @@
 import SwiftUI
 
 struct CalculatorButton: View {
+    
+    let buttonType: ButtonType
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Button(buttonType.description) { }
+            .buttonStyle(CalculatorButtonStyle(
+                size: 80,
+                backgroundColor: buttonType.backgroundColor,
+                foregroundColor: buttonType.foregroundColor)
+            )
     }
 }
 
 struct CalculatorButton_Previews: PreviewProvider {
     static var previews: some View {
-        CalculatorButton()
+        CalculatorButton(buttonType: .digit(.five))
     }
 }
