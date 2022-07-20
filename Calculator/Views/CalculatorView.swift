@@ -38,7 +38,7 @@ struct CalculatorView_Previews: PreviewProvider {
 extension CalculatorView {
     
     private var displayText: some View {
-        Text("0")
+        Text(viewModel.displayText)
             .padding()
             .foregroundColor(.white)
             .frame(maxWidth: .infinity, alignment: .trailing)
