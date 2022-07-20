@@ -9,20 +9,27 @@ import Foundation
 
 struct Calculator {
     
+    // MARK: - PROPERTIES
+    
+    private var newNumber: Decimal?
+    
     // MARK: - COMPUTED PROPERTIES
         
-    var number: Decimal? {
-        return 0
+    private var number: Decimal? {
+        newNumber
     }
     
     var displayText: String {
-        return "0"
+        return getNumberString(forNumber: number, withCommas: true)
     }
     
     // MARK: - OPERATIONS
     
     mutating func setDigit(_ digit: Digit) {
-
+        guard canAddDigit(digit) else { return }
+        let numberString = getNumberString(forNumber: newNumber)
+        print(digit.rawValue)
+        newNumber = Decimal(string: numberString.appending("\(digit.rawValue)"))
     }
     
     mutating func setOperation(_ operation: ArithmeticOperation) {
@@ -51,5 +58,15 @@ struct Calculator {
     
     mutating func clear() {
         
+    }
+    
+    // MARK: - HELPERS
+    
+    private func getNumberString(forNumber number: Decimal?, withCommas: Bool = false) -> String {
+        return (withCommas ? number?.formatted(.number) : number.map(String.init)) ?? "0"
+    }
+    
+    private func canAddDigit(_ digit: Digit) -> Bool {
+        return number != nil || digit != .zero
     }
 }
