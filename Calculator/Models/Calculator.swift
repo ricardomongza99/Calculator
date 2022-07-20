@@ -41,7 +41,7 @@ struct Calculator {
         
     }
     
-    mutating func setEquals() {
+    mutating func evaluate() {
         
     }
     
