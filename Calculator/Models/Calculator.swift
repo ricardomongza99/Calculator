@@ -28,7 +28,6 @@ struct Calculator {
     mutating func setDigit(_ digit: Digit) {
         guard canAddDigit(digit) else { return }
         let numberString = getNumberString(forNumber: newNumber)
-        print(digit.rawValue)
         newNumber = Decimal(string: numberString.appending("\(digit.rawValue)"))
     }
     
