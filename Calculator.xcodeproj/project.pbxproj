@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8CF0F898288861CE004003E5 /* CalculatorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CF0F897288861CE004003E5 /* CalculatorViewModel.swift */; };
+		8CF0F89C2888676B004003E5 /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CF0F89B2888676B004003E5 /* Calculator.swift */; };
 		8CFAC8442885CAD0009EDDC7 /* CalculatorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFAC8432885CAD0009EDDC7 /* CalculatorApp.swift */; };
 		8CFAC8482885CAD1009EDDC7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8CFAC8472885CAD1009EDDC7 /* Assets.xcassets */; };
 		8CFAC84B2885CAD1009EDDC7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8CFAC84A2885CAD1009EDDC7 /* Preview Assets.xcassets */; };
@@ -22,6 +23,7 @@
 
 /* Begin PBXFileReference section */
 		8CF0F897288861CE004003E5 /* CalculatorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewModel.swift; sourceTree = "<group>"; };
+		8CF0F89B2888676B004003E5 /* Calculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
 		8CFAC8402885CAD0009EDDC7 /* Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CFAC8432885CAD0009EDDC7 /* CalculatorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorApp.swift; sourceTree = "<group>"; };
 		8CFAC8472885CAD1009EDDC7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 		8CFAC8552885E0AD009EDDC7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				8CF0F89B2888676B004003E5 /* Calculator.swift */,
 				8CFAC8532885DE46009EDDC7 /* ButtonType.swift */,
 				8CFAC8572885E62B009EDDC7 /* Digit.swift */,
 				8CFAC8592885E688009EDDC7 /* ArithmeticOperation.swift */,
@@ -193,6 +196,7 @@
 				8CFAC85A2885E688009EDDC7 /* ArithmeticOperation.swift in Sources */,
 				8CF0F898288861CE004003E5 /* CalculatorViewModel.swift in Sources */,
 				8CFAC85F28864FDF009EDDC7 /* CalculatorButton.swift in Sources */,
+				8CF0F89C2888676B004003E5 /* Calculator.swift in Sources */,
 				8CFAC8522885CAE1009EDDC7 /* CalculatorView.swift in Sources */,
 				8CFAC8542885DE46009EDDC7 /* ButtonType.swift in Sources */,
 				8CFAC85D28860708009EDDC7 /* CalculatorButtonStyle.swift in Sources */,
