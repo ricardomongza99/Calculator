@@ -29,9 +29,16 @@ struct Calculator {
     
     // MARK: - PROPERTIES
     
-    private var newNumber: Decimal?
+    private var newNumber: Decimal? {
+        didSet {
+            guard newNumber != nil else { return }
+            carryingNegative = false
+        }
+    }
     private var expression: ArithmeticExpression?
     private var result: Decimal?
+    
+    private var carryingNegative: Bool = false
     
     // MARK: - COMPUTED PROPERTIES
         
@@ -61,11 +68,27 @@ struct Calculator {
     }
     
     mutating func toggleSign() {
+        if let number = newNumber {
+            newNumber = -number
+            return
+        }
+        if let number = result {
+            result = -number
+            return
+        }
         
+        carryingNegative.toggle()
     }
     
     mutating func setPercent() {
-        
+        if let number = newNumber {
+            newNumber = number / 100
+            return
+        }
+        if let number = result {
+            result = number / 100
+            return
+        }
     }
     
     mutating func setDecimal() {
@@ -94,7 +117,13 @@ struct Calculator {
     }
     
     private func getNumberString(forNumber number: Decimal?, withCommas: Bool = false) -> String {
-        return (withCommas ? number?.formatted(.number) : number.map(String.init)) ?? "0"
+        var numberString = (withCommas ? number?.formatted(.number) : number.map(String.init)) ?? "0"
+        
+        if carryingNegative {
+            numberString.insert("-", at: numberString.startIndex)
+        }
+        
+        return numberString
     }
     
     private func canAddDigit(_ digit: Digit) -> Bool {
