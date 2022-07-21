@@ -73,7 +73,10 @@ struct Calculator {
     }
     
     mutating func evaluate() {
-        
+        guard let number = newNumber, let expressionToEvaluate = expression else { return }
+        result = expressionToEvaluate.evaluate(with: number)
+        expression = nil
+        newNumber = nil
     }
     
     mutating func allClear() {
