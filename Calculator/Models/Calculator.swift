@@ -35,6 +35,7 @@ struct Calculator {
             carryingNegative = false
             carryingDecimal = false
             carryingZeroCount = 0
+            pressedClear = false
         }
     }
     private var expression: ArithmeticExpression?
@@ -44,14 +45,23 @@ struct Calculator {
     private var carryingDecimal: Bool = false
     private var carryingZeroCount: Int = 0
     
+    private var pressedClear: Bool = false
+    
     // MARK: - COMPUTED PROPERTIES
     
     var displayText: String {
         return getNumberString(forNumber: number, withCommas: true)
     }
+    
+    var showAllClear: Bool {
+        newNumber == nil && expression == nil && result == nil || pressedClear
+    }
         
-    private var number: Decimal? {
-        newNumber ?? expression?.number ?? result
+    var number: Decimal? {
+        if pressedClear || carryingDecimal {
+            return newNumber
+        }
+        return newNumber ?? expression?.number ?? result
     }
     
     private var containsDecimal: Bool {
@@ -124,7 +134,12 @@ struct Calculator {
     }
     
     mutating func clear() {
+        newNumber = nil
+        carryingNegative = false
+        carryingDecimal = false
+        carryingZeroCount = 0
         
+        pressedClear = true
     }
     
     // MARK: - HELPERS
