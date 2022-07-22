@@ -33,21 +33,27 @@ struct Calculator {
         didSet {
             guard newNumber != nil else { return }
             carryingNegative = false
+            carryingDecimal = false
         }
     }
     private var expression: ArithmeticExpression?
     private var result: Decimal?
     
     private var carryingNegative: Bool = false
+    private var carryingDecimal: Bool = false
     
     // MARK: - COMPUTED PROPERTIES
+    
+    var displayText: String {
+        return getNumberString(forNumber: number, withCommas: true)
+    }
         
     private var number: Decimal? {
         newNumber ?? expression?.number ?? result
     }
     
-    var displayText: String {
-        return getNumberString(forNumber: number, withCommas: true)
+    private var containsDecimal: Bool {
+        return getNumberString(forNumber: number).contains(".")
     }
     
     // MARK: - OPERATIONS
@@ -92,7 +98,8 @@ struct Calculator {
     }
     
     mutating func setDecimal() {
-        
+        if containsDecimal { return }
+        carryingDecimal = true
     }
     
     mutating func evaluate() {
@@ -121,6 +128,10 @@ struct Calculator {
         
         if carryingNegative {
             numberString.insert("-", at: numberString.startIndex)
+        }
+        
+        if carryingDecimal {
+            numberString.insert(".", at: numberString.endIndex)
         }
         
         return numberString
